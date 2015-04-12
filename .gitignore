@@ -1,0 +1,7 @@
+*.a
+*.obj
+*.o
+tags
+*~
+*.swp
+*.tar.bz2*
