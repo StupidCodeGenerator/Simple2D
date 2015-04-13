@@ -14,13 +14,6 @@ extern float S2_Color_r;
 extern float S2_Color_g;
 extern float S2_Color_b;
 
-typedef struct {
-	unsigned int width;
-	unsigned int height;
-	unsigned char *img;
-	unsigned char *img_back;
-} S2_Image;
-
 // This is the comment from that xml file
 //n = > name of the sprite
 //x = > sprite x pos in texture
@@ -46,15 +39,12 @@ typedef struct {
 
 S2_SpriteSheet * S2_LoadSprites(const char* fileName);
 
-// the x and y will become the center position
-void S2_AnchorCalculation(float &x, float &y, int anchor);
+void S2_SetColor(const float r, const float g, const float b);
 
-void S2_SetColor(float r, float g, float b);
+void S2_DrawTriangle(const float x1, const float y1, const float x2, const float y2, const float x3, const float y3);
+void S2_DrawRect(const float x1, const float y1, const float x2, const float y2);
+void S2_DrawLine(const float x1, const float y1, const float x2, const float y2);
 
-void S2_DrawTriangle(float x1, float y1, float x2, float y2, float x3, float y3);
-void S2_DrawRect(float x1, float y1, float x2, float y2);
-void S2_DrawLine(float x1, float y1, float x2, float y2);
-
-void S2_DrawTexture(float x, float y, float width, float height, GLuint textureName);
+void S2_DrawTexture(const float x, const float y, const float width, const float height, GLuint textureName);
 
 #endif
