@@ -50,6 +50,7 @@ void S2_DrawTexture(float x, float y, float width, float height, GLuint textureN
 	float vertexTRy = y + height / 2;
 	float vertexTLx = x - width / 2;
 	float vertexTLy = y + height / 2;
+	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, textureName);
 	glBegin(GL_QUADS);
 	glTexCoord2f(0.0f, 0.0f); glVertex2f(vertexBLx, vertexBLy);
@@ -58,4 +59,5 @@ void S2_DrawTexture(float x, float y, float width, float height, GLuint textureN
 	glTexCoord2f(0.0f, 1.0f); glVertex2f(vertexTLx, vertexTLy);
 	glEnd();
 	glBindTexture(GL_TEXTURE_2D, 0);
+	glDisable(GL_TEXTURE_2D);
 }

@@ -9,7 +9,6 @@ void renderScene(void) {
 	glClear(GL_COLOR_BUFFER_BIT);    //清除上次显示的结果，每次绘制前都必须调用      
 	glClearColor(0.0, 0.0, 0.0, 0.0);  //此句注释掉对结果没有影响,说明默认的“清除颜色为黑色”
 	glClear(GL_COLOR_BUFFER_BIT);    //清除上次显示的结果，每次绘制前都必须调用    
-	//glLoadIdentity();
 	S2_SetColor(1.0, 0.0, 0.0);
 	S2_DrawTriangle(30, 30, 400, 40, 50, 250);
 	S2_SetColor(0.0, 1.0, 0.0);
@@ -37,14 +36,13 @@ void main(int argc, char **argv) {
 	gluOrtho2D(0, 800, 0, 600);
 	glutDisplayFunc(renderScene);  //renderScene是回调函数     
 	glDisable(GL_DEPTH_TEST); // 去掉深度检测，纯2d
-	glEnable(GL_TEXTURE_2D);
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
 	glTexEnvfv(GL_TEXTURE_ENV, GL_TEXTURE_ENV_COLOR, texcolor);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE);
 	glEnable(GL_BLEND);
 	tex_2d = SOIL_load_OGL_texture
 		(
-		"res/fuck.png",
+		"../res/fuck.png",
 		SOIL_LOAD_AUTO,
 		SOIL_CREATE_NEW_ID,
 		SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_NTSC_SAFE_RGB | SOIL_FLAG_COMPRESS_TO_DXT
