@@ -61,3 +61,10 @@ void S2_DrawTexture(const float x, const float y, const float width, const float
 	glBindTexture(GL_TEXTURE_2D, 0);
 	glDisable(GL_TEXTURE_2D);
 }
+
+// TODO: create a simple sprite for test
+S2_Sprite * S2_CreateSprite(GLuint textureName, float x, float y, float width, float height) {
+	
+}
+S2_SpriteSheet * S2_LoadSprites(const char* fileName, const GLuint textureName) {}
+void S2_DrawSprite(const S2_Sprite * sprite, float x, float y) {}
