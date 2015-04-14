@@ -15,7 +15,6 @@ void renderScene(void) {
 	S2_DrawRect(100, 100, 300, 200);
 	S2_SetColor(0.0, 1.0, 1.0);
 	S2_DrawLine(100, 100, 200, 300);
-	S2_DrawTexture(300, 300, 256, 256, tex_2d);
 	glFlush();  //和单缓冲GLUT_SINGLE 配合使用
 	glutSwapBuffers(); //和双缓冲GLUT_DOUBLE配合使用
 }
@@ -40,13 +39,7 @@ void main(int argc, char **argv) {
 	glTexEnvfv(GL_TEXTURE_ENV, GL_TEXTURE_ENV_COLOR, texcolor);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE);
 	glEnable(GL_BLEND);
-	tex_2d = SOIL_load_OGL_texture
-		(
-		"../res/fuck.png",
-		SOIL_LOAD_AUTO,
-		SOIL_CREATE_NEW_ID,
-		SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_NTSC_SAFE_RGB | SOIL_FLAG_COMPRESS_TO_DXT
-		);
+
 
 	glutMainLoop();
 
