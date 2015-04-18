@@ -2,29 +2,29 @@
 
 #include "2DInterface.h"
 
-float S2_Color_r = 0.0f;
-float S2_Color_g = 0.0f;
-float S2_Color_b = 0.0f;
+static int float g_S2Color_r = 0.0f;
+static float g_S2Color_g = 0.0f;
+static float g_S2Color_b = 0.0f;
 
-void S2_SetColor(const float r, const float g, const float b) {
-	S2_Color_r = r;
-	S2_Color_g = g;
-	S2_Color_b = b;
+void S2SetColor(float r, float g, float b) {
+	g_S2Color_r = r;
+	g_S2Color_g = g;
+	g_S2Color_b = b;
 }
 
-void S2_DrawTriangle(const float x1, const float y1, const float x2, const float y2, const float x3, const float y3) {
+void S2DrawTriangle(float x1, float y1, float x2, float y2, float x3, float y3) {
 
 	glBegin(GL_TRIANGLES);
-	glColor3f(S2_Color_r, S2_Color_g, S2_Color_b);
+	glColor3f(g_S2Color_r, g_S2Color_g, g_S2Color_b);
 	glVertex2f(x1, y1);
 	glVertex2f(x2, y2);
 	glVertex2f(x3, y3);
 	glEnd();
 }
 
-void S2_DrawRect(const float x1, const float y1, const float x2, const float y2) {
+void S2DrawRect(float x1, float y1, float x2, float y2) {
 	glBegin(GL_POLYGON);
-	glColor3f(S2_Color_r, S2_Color_g, S2_Color_b);
+	glColor3f(g_S2Color_r, g_S2Color_g, g_S2Color_b);
 	glVertex2f(x1, y1);
 	glVertex2f(x1, y2);
 	glVertex2f(x2, y2);
@@ -32,15 +32,15 @@ void S2_DrawRect(const float x1, const float y1, const float x2, const float y2)
 	glEnd();
 }
 
-void S2_DrawLine(const float x1, const float y1, const float x2, const float y2) {
+void S2DrawLine(float x1, float y1, float x2, float y2) {
 	glBegin(GL_LINES);
-	glColor3f(S2_Color_r, S2_Color_g, S2_Color_b);
+	glColor3f(g_S2Color_r, g_S2Color_g, g_S2Color_b);
 	glVertex2f(x1, y1);
 	glVertex2f(x2, y2);
 	glEnd();
 }
 
-S2_Texture* LoadTextureFromFile(char* fileName, int texWidth, int texHeight) {
+S2Texture* S2Texture::LoadTextureFromFile(char* fileName, int texWidth, int texHeight) {
 	GLuint textureName = SOIL_load_OGL_texture
 		(
 		//"../res/fuck.png",
@@ -49,30 +49,28 @@ S2_Texture* LoadTextureFromFile(char* fileName, int texWidth, int texHeight) {
 		SOIL_CREATE_NEW_ID,
 		SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_NTSC_SAFE_RGB | SOIL_FLAG_COMPRESS_TO_DXT
 		);
-	S2_Texture * result = new S2_Texture;
+	S2Texture * result = new S2Texture();
 	result->textureName = textureName;
 	result->width = texWidth;
 	result->height = texHeight;
 	return result;
 }
 
-void S2_DrawTexture(const float x, const float y, S2_Texture* texture) {
-	S2_DrawLimitedTexture(
+void S2Texture::S2DrawTexture(float x, float y) {
+	S2DrawLimitedTexture(
 		x, y,
 		0.0f, 0.0f, 1.0f, 0.0f,
-		1.0f, 1.0f, 0.0f, 1.0f,
-		texture);
+		1.0f, 1.0f, 0.0f, 1.0f);
 }
 
-void S2_DrawLimitedTexture(const float x, const float y,
-	const float xLB, const float yLB,
-	const float xRB, const float yRB,
-	const float xRT, const float yRT,
-	const float xLT, const float yLT,
-	S2_Texture * texture) {
+void S2Texture::S2DrawLimitedTexture(float x, float y,
+	float xLB, float yLB,
+	float xRB, float yRB,
+	float xRT, float yRT,
+	float xLT, float yLT) {
 	// Calculate vertexes
-	float width = texture->width;
-	float height = texture->height;
+	float width = this->width;
+	float height = this->height;
 	float vertexBLx = x - width / 2;
 	float vertexBLy = y - height / 2;
 	float vertexBRx = x + width / 2;
@@ -82,7 +80,7 @@ void S2_DrawLimitedTexture(const float x, const float y,
 	float vertexTLx = x - width / 2;
 	float vertexTLy = y + height / 2;
 	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, texture->textureName);
+	glBindTexture(GL_TEXTURE_2D, this->textureName);
 	glBegin(GL_QUADS);
 
 	glTexCoord2f(xLB, yLB); glVertex2f(vertexBLx, vertexBLy);
@@ -92,6 +90,5 @@ void S2_DrawLimitedTexture(const float x, const float y,
 	glEnd();
 	glBindTexture(GL_TEXTURE_2D, 0);
 	glDisable(GL_TEXTURE_2D);
-
 }
 
