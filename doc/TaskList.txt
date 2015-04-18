@@ -6,3 +6,11 @@
 
 2 Advanced
 	2.1 DialogMachine for my personal use. (Done)
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Current work :
+I need a sprite coordinate info file loader to read the sprite
+coordinates.
+The texture packer was not free so maybe I should write a python
+script to do this.

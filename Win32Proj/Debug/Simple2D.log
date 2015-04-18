@@ -1,15 +1,14 @@
-﻿Build started 2015/4/13 22:43:40.
+﻿Build started 2015/4/18 23:12:50.
      1>Project "D:\VSProjects\Simple2D\Win32Proj\Simple2D.vcxproj" on node 2 (Build target(s)).
-     1>Link:
+     1>ClCompile:
+         C:\Program Files\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I..\libs\GL /I..\libs /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\src\2DInterface.cpp
+         2DInterface.cpp
+       Link:
          C:\Program Files\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\VSProjects\Simple2D\Win32Proj\Debug\Simple2D.exe" /INCREMENTAL /NOLOGO /LIBPATH:..\libs SOIL.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\VSProjects\Simple2D\Win32Proj\Debug\Simple2D.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\VSProjects\Simple2D\Win32Proj\Debug\Simple2D.lib" /MACHINE:X86 Debug\2DInterface.obj
          Debug\Main.obj
-     1>SOIL.lib(image_DXT.obj) : warning LNK4204: 'D:\VSProjects\Simple2D\Win32Proj\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
-     1>SOIL.lib(image_helper.obj) : warning LNK4204: 'D:\VSProjects\Simple2D\Win32Proj\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
-     1>SOIL.lib(SOIL.obj) : warning LNK4204: 'D:\VSProjects\Simple2D\Win32Proj\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
-     1>SOIL.lib(stb_image_aug.obj) : warning LNK4204: 'D:\VSProjects\Simple2D\Win32Proj\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
          Simple2D.vcxproj -> D:\VSProjects\Simple2D\Win32Proj\Debug\Simple2D.exe
      1>Done Building Project "D:\VSProjects\Simple2D\Win32Proj\Simple2D.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:09.22
+Time Elapsed 00:00:04.10

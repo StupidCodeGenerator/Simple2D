@@ -34,14 +34,11 @@ public:
 };
 
 // the width and height should be well known before load
-S2_Texture* LoadTextureFromFile(char * fileName, int texWidth, int texHeight);
+S2_Texture* S2_LoadTextureFromFile(char * fileName, int texWidth, int texHeight);
 
 void S2_DrawTexture(const float x, const float y, S2_Texture * texture);
 void S2_DrawLimitedTexture(const float x, const float y,
-	const float xLB, const float yLB,
-	const float xRB, const float yRB,
-	const float xRT, const float yRT,
-	const float xLT, const float yLT,
+	float left, float right, float top, float bottom,
 	S2_Texture * texture);
 
 class S2_Sprite {

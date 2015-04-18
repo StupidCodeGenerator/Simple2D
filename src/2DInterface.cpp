@@ -40,7 +40,7 @@ void S2_DrawLine(const float x1, const float y1, const float x2, const float y2)
 	glEnd();
 }
 
-S2_Texture* LoadTextureFromFile(char* fileName, int texWidth, int texHeight) {
+S2_Texture* S2_LoadTextureFromFile(char* fileName, int texWidth, int texHeight) {
 	GLuint textureName = SOIL_load_OGL_texture
 		(
 		//"../res/fuck.png",
@@ -59,20 +59,16 @@ S2_Texture* LoadTextureFromFile(char* fileName, int texWidth, int texHeight) {
 void S2_DrawTexture(const float x, const float y, S2_Texture* texture) {
 	S2_DrawLimitedTexture(
 		x, y,
-		0.0f, 0.0f, 1.0f, 0.0f,
-		1.0f, 1.0f, 0.0f, 1.0f,
+		0.0f, 1.0f, 1.0f, 0.0f,
 		texture);
 }
 
 void S2_DrawLimitedTexture(const float x, const float y,
-	const float xLB, const float yLB,
-	const float xRB, const float yRB,
-	const float xRT, const float yRT,
-	const float xLT, const float yLT,
+	float left, float right, float top, float bottom,
 	S2_Texture * texture) {
 	// Calculate vertexes
-	float width = texture->width;
-	float height = texture->height;
+	float width = (texture->width) * (right - left);
+	float height = (texture->height) * (top - bottom);
 	float vertexBLx = x - width / 2;
 	float vertexBLy = y - height / 2;
 	float vertexBRx = x + width / 2;
@@ -85,10 +81,10 @@ void S2_DrawLimitedTexture(const float x, const float y,
 	glBindTexture(GL_TEXTURE_2D, texture->textureName);
 	glBegin(GL_QUADS);
 
-	glTexCoord2f(xLB, yLB); glVertex2f(vertexBLx, vertexBLy);
-	glTexCoord2f(xRB, yRB); glVertex2f(vertexBRx, vertexBRy);
-	glTexCoord2f(xRT, yRT); glVertex2f(vertexTRx, vertexTRy);
-	glTexCoord2f(xLT, yLT); glVertex2f(vertexTLx, vertexTLy);
+	glTexCoord2f(left, bottom); glVertex2f(vertexBLx, vertexBLy);
+	glTexCoord2f(right, bottom); glVertex2f(vertexBRx, vertexBRy);
+	glTexCoord2f(right, top); glVertex2f(vertexTRx, vertexTRy);
+	glTexCoord2f(left, top); glVertex2f(vertexTLx, vertexTLy);
 	glEnd();
 	glBindTexture(GL_TEXTURE_2D, 0);
 	glDisable(GL_TEXTURE_2D);
