@@ -71,10 +71,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\2DInterface.cpp" />
+    <ClCompile Include="..\src\FileUtil.cpp" />
     <ClCompile Include="..\src\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\2DInterface.h" />
+    <ClInclude Include="..\src\FileUtil.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

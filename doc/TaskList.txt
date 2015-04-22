@@ -12,5 +12,5 @@
 Current work :
 I need a sprite coordinate info file loader to read the sprite
 coordinates.
-The texture packer was not free so maybe I should write a python
-script to do this.
+I should use Texturepacker at first and I should finish the engine,
+then the editors. 
