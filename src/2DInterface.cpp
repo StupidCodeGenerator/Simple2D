@@ -88,6 +88,10 @@ void S2_DrawLimitedTexture(const float x, const float y,
 	glEnd();
 	glBindTexture(GL_TEXTURE_2D, 0);
 	glDisable(GL_TEXTURE_2D);
+}
 
+S2_SpriteSheet * S2_LoadSpriteSheetFromFile(char* fileName, GLuint textureName) {
+	tinyxml2::XMLDocument * xDoc = new tinyxml2::XMLDocument();
+	return NULL;
 }
 

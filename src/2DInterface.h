@@ -7,6 +7,7 @@
 #include<GL/glut.h>
 #include<stdio.h>
 #include"SOIL.h"
+#include"tinyxml2.h"
 
 // The SetColor(float, float, float) function will change them
 // And the paint procedure will paint the shapes based on that
@@ -51,6 +52,6 @@ public:
 	int length;
 };
 
-S2_SpriteSheet * S2_LoadSpriteSheetFromFile(char * fileName);
+S2_SpriteSheet * S2_LoadSpriteSheetFromFile(char * fileName, GLuint textureName);
 
 #endif
