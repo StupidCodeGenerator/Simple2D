@@ -17,9 +17,6 @@ extern float S2_Color_r;
 extern float S2_Color_g;
 extern float S2_Color_b;
 
-
-
-
 void S2_SetColor(const float r, const float g, const float b);
 
 void S2_DrawTriangle(const float x1, const float y1, const float x2, const float y2, const float x3, const float y3);
@@ -54,5 +51,6 @@ public:
 	int length;
 };
 
+S2_SpriteSheet * S2_LoadSpriteSheetFromFile(char * fileName);
 
 #endif
