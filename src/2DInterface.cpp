@@ -90,8 +90,36 @@ void S2_DrawLimitedTexture(const float x, const float y,
 	glDisable(GL_TEXTURE_2D);
 }
 
-S2_SpriteSheet * S2_LoadSpriteSheetFromFile(char* fileName, GLuint textureName) {
+S2_SpriteSheet * S2_LoadSpriteSheetFromFile(char* fileName, S2_Texture * pTexture) {
 	tinyxml2::XMLDocument * xDoc = new tinyxml2::XMLDocument();
+	xDoc->LoadFile(fileName);
+	tinyxml2::XMLElement * pSpriteRoot = xDoc->LastChild()->ToElement();
+	tinyxml2::XMLElement * pChildEle = pSpriteRoot->FirstChildElement();
+	S2_SpriteSheet * pResult = new S2_SpriteSheet();
+	int spriteCount = 0;
+	pResult->pSprites = new S2_Sprite[MAX_SPRITE_SHEET];
+	while (pChildEle != NULL) {
+		S2_Sprite * pSprite = new S2_Sprite();
+		pSprite->pSpriteName = pChildEle->Attribute("n");
+		float x = atof(pChildEle->Attribute("x"));
+		float y = atof(pChildEle->Attribute("y"));
+		float w = atof(pChildEle->Attribute("w"));
+		float h = atof(pChildEle->Attribute("h"));
+		float oX, oY, oW, oH;
+		if (pChildEle->Attribute("oX") != NULL) {
+			oX = atof(pChildEle->Attribute("oX"));
+			oY = atof(pChildEle->Attribute("oY"));
+			oW = atof(pChildEle->Attribute("oW"));
+			oH = atof(pChildEle->Attribute("oH"));
+		}
+		else {
+			oX = x, oY = y, oW = w, oH = h;
+		}
+		pSprite->isRotated = FALSE;
+		if (pChildEle->Attribute("r") != NULL) {
+			pSprite->isRotated = (pChildEle->Attribute("r")[0] == 'y');
+		}
+		pChildEle = pChildEle->NextSiblingElement();
+	}
 	return NULL;
 }
-

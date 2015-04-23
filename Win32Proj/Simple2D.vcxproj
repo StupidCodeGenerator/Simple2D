@@ -70,11 +70,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\libs\tinyxml2.cpp" />
     <ClCompile Include="..\src\2DInterface.cpp" />
     <ClCompile Include="..\src\FileUtil.cpp" />
     <ClCompile Include="..\src\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\libs\tinyxml2.h" />
     <ClInclude Include="..\src\2DInterface.h" />
     <ClInclude Include="..\src\FileUtil.h" />
   </ItemGroup>

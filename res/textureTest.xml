@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://texturepacker.com-->
+<!-- $TexturePacker:SmartUpdate:54a54069a0114c2b7c46055e0450f49f$ -->
+<!--Format:
+n  => name of the sprite
+x  => sprite x pos in texture
+y  => sprite y pos in texture
+w  => sprite width (may be trimmed)
+h  => sprite height (may be trimmed)
+oX => sprite's x-corner offset (only available if trimmed)
+oY => sprite's y-corner offset (only available if trimmed)
+oW => sprite's original width (only available if trimmed)
+oH => sprite's original height (only available if trimmed)
+r => 'y' only set if sprite is rotated
+-->
+<TextureAtlas imagePath="textureTest.png" width="1024" height="1024">
+    <sprite n="BulletHole" x="804" y="2" w="111" h="89" oX="7" oY="18" oW="125" oH="129" r="y"/>
+    <sprite n="Cover1" x="2" y="484" w="800" h="480"/>
+    <sprite n="Cover2" x="2" y="2" w="800" h="480"/>
+    <sprite n="NewGame" x="2" y="966" w="106" h="34"/>
+</TextureAtlas>

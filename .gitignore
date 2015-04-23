@@ -7,3 +7,4 @@ tags
 *.tar.bz2*
 *.sdf
 *.opensdf
+*.tlog

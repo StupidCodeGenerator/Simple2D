@@ -41,17 +41,19 @@ void S2_DrawLimitedTexture(const float x, const float y,
 
 class S2_Sprite {
 public:
-	S2_Texture* texture;
+	const char * pSpriteName;
+	S2_Texture* pTexture;
 	float xLB, yLB, xRB, yRB, xRT, yRT, xLT, yLT; // Texture range
+	float offsetX, offsetY;
 	bool isRotated;
 };
 
 class S2_SpriteSheet {
 public:
-	S2_Sprite sprites[MAX_SPRITE_SHEET];
+	S2_Sprite * pSprites;
 	int length;
 };
 
-S2_SpriteSheet * S2_LoadSpriteSheetFromFile(char * fileName, GLuint textureName);
+S2_SpriteSheet * S2_LoadSpriteSheetFromFile(char * fileName, S2_Texture * pTexture);
 
 #endif

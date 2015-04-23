@@ -24,12 +24,18 @@
     <ClCompile Include="..\src\FileUtil.cpp">
       <Filter>src\Util</Filter>
     </ClCompile>
+    <ClCompile Include="..\libs\tinyxml2.cpp">
+      <Filter>src\Util</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\2DInterface.h">
       <Filter>src\Core</Filter>
     </ClInclude>
     <ClInclude Include="..\src\FileUtil.h">
+      <Filter>src\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\tinyxml2.h">
       <Filter>src\Util</Filter>
     </ClInclude>
   </ItemGroup>

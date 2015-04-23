@@ -43,6 +43,7 @@ void main(int argc, char **argv) {
 	glEnable(GL_BLEND);
 
 	pTestTexture = S2_LoadTextureFromFile("../res/fuck.png", 256, 256);
+	S2_SpriteSheet * pTestSprite = S2_LoadSpriteSheetFromFile("../res/textureTest.xml", pTestTexture);
 
 	glutMainLoop();
 

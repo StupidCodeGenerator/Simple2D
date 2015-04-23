@@ -1,16 +1,24 @@
-﻿Build started 2015/4/22 23:28:59.
+﻿Build started 2015/4/23 23:13:49.
      1>Project "D:\GithubUpload\Simple2D\Win32Proj\Simple2D.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I..\libs\GL /I..\libs /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\src\2DInterface.cpp
          2DInterface.cpp
+     1>d:\githubupload\simple2d\src\2dinterface.cpp(104): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+     1>d:\githubupload\simple2d\src\2dinterface.cpp(105): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+     1>d:\githubupload\simple2d\src\2dinterface.cpp(106): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+     1>d:\githubupload\simple2d\src\2dinterface.cpp(107): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+     1>d:\githubupload\simple2d\src\2dinterface.cpp(110): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>d:\githubupload\simple2d\src\2dinterface.cpp(111): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>d:\githubupload\simple2d\src\2dinterface.cpp(112): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>d:\githubupload\simple2d\src\2dinterface.cpp(113): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
        Link:
-         C:\Program Files\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\GithubUpload\Simple2D\Win32Proj\Debug\Simple2D.exe" /INCREMENTAL /NOLOGO /LIBPATH:..\libs SOIL.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\GithubUpload\Simple2D\Win32Proj\Debug\Simple2D.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\GithubUpload\Simple2D\Win32Proj\Debug\Simple2D.lib" /MACHINE:X86 Debug\2DInterface.obj
+         C:\Program Files\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\GithubUpload\Simple2D\Win32Proj\Debug\Simple2D.exe" /INCREMENTAL /NOLOGO /LIBPATH:..\libs SOIL.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\GithubUpload\Simple2D\Win32Proj\Debug\Simple2D.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\GithubUpload\Simple2D\Win32Proj\Debug\Simple2D.lib" /MACHINE:X86 Debug\tinyxml2.obj
+         Debug\2DInterface.obj
          Debug\FileUtil.obj
          Debug\Main.obj
-     1>2DInterface.obj : error LNK2019: unresolved external symbol "public: __thiscall tinyxml2::XMLDocument::XMLDocument(bool,enum tinyxml2::Whitespace)" (??0XMLDocument@tinyxml2@@QAE@_NW4Whitespace@1@@Z) referenced in function "class S2_SpriteSheet * __cdecl S2_LoadSpriteSheetFromFile(char *,unsigned int)" (?S2_LoadSpriteSheetFromFile@@YAPAVS2_SpriteSheet@@PADI@Z)
-     1>D:\GithubUpload\Simple2D\Win32Proj\Debug\Simple2D.exe : fatal error LNK1120: 1 unresolved externals
-     1>Done Building Project "D:\GithubUpload\Simple2D\Win32Proj\Simple2D.vcxproj" (Build target(s)) -- FAILED.
+         Simple2D.vcxproj -> D:\GithubUpload\Simple2D\Win32Proj\Debug\Simple2D.exe
+     1>Done Building Project "D:\GithubUpload\Simple2D\Win32Proj\Simple2D.vcxproj" (Build target(s)).
 
-Build FAILED.
+Build succeeded.
 
-Time Elapsed 00:00:03.83
+Time Elapsed 00:00:00.90
