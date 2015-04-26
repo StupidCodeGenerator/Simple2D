@@ -90,6 +90,10 @@ void S2_DrawLimitedTexture(const float x, const float y,
 	glDisable(GL_TEXTURE_2D);
 }
 
+/*
+	The Xml file uses the left top as the 0 spot. But the openGL uses
+	left bottom as the 0 spot.
+	*/
 S2_SpriteSheet * S2_LoadSpriteSheetFromFile(char* fileName, S2_Texture * pTexture) {
 	tinyxml2::XMLDocument * xDoc = new tinyxml2::XMLDocument();
 	xDoc->LoadFile(fileName);
@@ -100,7 +104,9 @@ S2_SpriteSheet * S2_LoadSpriteSheetFromFile(char* fileName, S2_Texture * pTextur
 	pResult->pSprites = new S2_Sprite[MAX_SPRITE_SHEET];
 	while (pChildEle != NULL) {
 		S2_Sprite * pSprite = new S2_Sprite();
+		// Read the original data
 		pSprite->pSpriteName = pChildEle->Attribute("n");
+		pSprite->pTexture = pTexture;
 		float x = atof(pChildEle->Attribute("x"));
 		float y = atof(pChildEle->Attribute("y"));
 		float w = atof(pChildEle->Attribute("w"));
@@ -111,15 +117,33 @@ S2_SpriteSheet * S2_LoadSpriteSheetFromFile(char* fileName, S2_Texture * pTextur
 			oY = atof(pChildEle->Attribute("oY"));
 			oW = atof(pChildEle->Attribute("oW"));
 			oH = atof(pChildEle->Attribute("oH"));
-		}
-		else {
+		} else {
 			oX = x, oY = y, oW = w, oH = h;
 		}
 		pSprite->isRotated = FALSE;
 		if (pChildEle->Attribute("r") != NULL) {
 			pSprite->isRotated = (pChildEle->Attribute("r")[0] == 'y');
 		}
+		// Then translate them into left bottom coordination
+		//float lbx, lby, lbox, lboy;
+		//LeftTopToLeftBottomTranslation(&lbx, &lby, x, y, pTexture->height, h);
+		//LeftTopToLeftBottomTranslation(&lbox, &lboy, oX, oY, oH, h);
+		S2_Vector2 * pVlt = S2_CreateVector2(x, y);
+		S2_Vector2 * pVlb = S2_LeftTopToLeftBottomTransaction(pVlt, pTexture->height);
+		pVlb = S2_SubVector2(pVlb, S2_CreateVector2(0, h)); // move anchor point to the left bottom point
+		S2_Vector2 * volt = S2_CreateVector2(oX, oY);
+		S2_Vector2 * volb = S2_LeftTopToLeftBottomTransaction(volt, oH);
+		volb = S2_SubVector2(volb, S2_CreateVector2(0, h)); // move anchor point to the left bottom point
+		// Calculate the vertices and write data to sprite
+		pSprite->pVlb = pVlb;
+		pSprite->pVrb = S2_AddVector2(pVlb, S2_CreateVector2(w, 0));
+		pSprite->pVrt = S2_AddVector2(pVlb, S2_CreateVector2(w, h));
+		pSprite->pVlt = S2_AddVector2(pVlb, S2_CreateVector2(0, h));
+		// Then put the sprite into a sprite sheet
+		pResult->pSprites[spriteCount] = *pSprite;
+		spriteCount++;
 		pChildEle = pChildEle->NextSiblingElement();
 	}
-	return NULL;
+	pResult->length = spriteCount;
+	return pResult;
 }

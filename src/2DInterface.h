@@ -8,6 +8,7 @@
 #include<stdio.h>
 #include"SOIL.h"
 #include"tinyxml2.h"
+#include "Transactions.h"
 
 // The SetColor(float, float, float) function will change them
 // And the paint procedure will paint the shapes based on that
@@ -41,10 +42,11 @@ void S2_DrawLimitedTexture(const float x, const float y,
 
 class S2_Sprite {
 public:
-	const char * pSpriteName;
-	S2_Texture* pTexture;
-	float xLB, yLB, xRB, yRB, xRT, yRT, xLT, yLT; // Texture range
+	const char *pSpriteName;
+	S2_Texture *pTexture;
+	S2_Vector2 *pVlb, *pVrb, *pVrt, *pVlt;
 	float offsetX, offsetY;
+	float originalWidth, originalHeight;
 	bool isRotated;
 };
 

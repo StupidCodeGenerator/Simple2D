@@ -7,11 +7,11 @@
     <Filter Include="src">
       <UniqueIdentifier>{f0bfbe62-9e6e-4a51-9be8-49d394b9ec9b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Util">
-      <UniqueIdentifier>{04728ebc-f7d9-4600-9bd8-49953765c926}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\Core">
       <UniqueIdentifier>{8ae00c6c-5f0c-4518-8a7d-a2fb109383e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Helpers">
+      <UniqueIdentifier>{04728ebc-f7d9-4600-9bd8-49953765c926}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -21,22 +21,22 @@
     <ClCompile Include="..\src\2DInterface.cpp">
       <Filter>src\Core</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\FileUtil.cpp">
-      <Filter>src\Util</Filter>
-    </ClCompile>
     <ClCompile Include="..\libs\tinyxml2.cpp">
-      <Filter>src\Util</Filter>
+      <Filter>src\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Transactions.cpp">
+      <Filter>src\Helpers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\2DInterface.h">
       <Filter>src\Core</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\FileUtil.h">
-      <Filter>src\Util</Filter>
-    </ClInclude>
     <ClInclude Include="..\libs\tinyxml2.h">
-      <Filter>src\Util</Filter>
+      <Filter>src\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Transactions.h">
+      <Filter>src\Helpers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
