@@ -1,25 +1,20 @@
-﻿Build started 2015/4/27 7:33:35.
+﻿Build started 2015/4/28 6:52:47.
      1>Project "D:\GithubUpload\Simple2D\Win32Proj\Simple2D.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I..\libs\GL /I..\libs /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\src\2DInterface.cpp
-         2DInterface.cpp
-     1>d:\githubupload\simple2d\src\2dinterface.cpp(110): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
-     1>d:\githubupload\simple2d\src\2dinterface.cpp(111): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
-     1>d:\githubupload\simple2d\src\2dinterface.cpp(112): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
-     1>d:\githubupload\simple2d\src\2dinterface.cpp(113): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
-     1>d:\githubupload\simple2d\src\2dinterface.cpp(116): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
-     1>d:\githubupload\simple2d\src\2dinterface.cpp(117): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
-     1>d:\githubupload\simple2d\src\2dinterface.cpp(118): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
-     1>d:\githubupload\simple2d\src\2dinterface.cpp(119): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
-     1>d:\githubupload\simple2d\src\2dinterface.cpp(132): warning C4244: 'argument' : conversion from 'int' to 'const float', possible loss of data
+         C:\Program Files\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I..\libs\GL /I..\libs /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\src\Main.cpp
+         Main.cpp
        Link:
          C:\Program Files\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\GithubUpload\Simple2D\Win32Proj\Debug\Simple2D.exe" /INCREMENTAL /NOLOGO /LIBPATH:..\libs SOIL.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\GithubUpload\Simple2D\Win32Proj\Debug\Simple2D.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\GithubUpload\Simple2D\Win32Proj\Debug\Simple2D.lib" /MACHINE:X86 Debug\tinyxml2.obj
          Debug\2DInterface.obj
          Debug\Main.obj
          Debug\Transactions.obj
+     1>SOIL.lib(image_DXT.obj) : warning LNK4204: 'D:\GithubUpload\Simple2D\Win32Proj\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>SOIL.lib(image_helper.obj) : warning LNK4204: 'D:\GithubUpload\Simple2D\Win32Proj\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>SOIL.lib(SOIL.obj) : warning LNK4204: 'D:\GithubUpload\Simple2D\Win32Proj\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>SOIL.lib(stb_image_aug.obj) : warning LNK4204: 'D:\GithubUpload\Simple2D\Win32Proj\Debug\vc120.pdb' is missing debugging information for referencing module; linking object as if no debug info
          Simple2D.vcxproj -> D:\GithubUpload\Simple2D\Win32Proj\Debug\Simple2D.exe
      1>Done Building Project "D:\GithubUpload\Simple2D\Win32Proj\Simple2D.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.82
+Time Elapsed 00:00:01.46

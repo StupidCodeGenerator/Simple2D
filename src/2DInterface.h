@@ -37,15 +37,15 @@ S2_Texture* S2_LoadTextureFromFile(char * fileName, int texWidth, int texHeight)
 
 void S2_DrawTexture(const float x, const float y, S2_Texture * texture);
 void S2_DrawLimitedTexture(const float x, const float y,
-	float left, float right, float top, float bottom,
+	S2_Vector2 *plb, S2_Vector2 *prb, S2_Vector2 *prt, S2_Vector2 *plt,
 	S2_Texture * texture);
 
 class S2_Sprite {
 public:
 	const char *pSpriteName;
 	S2_Texture *pTexture;
-	S2_Vector2 *pVlb, *pVrb, *pVrt, *pVlt;
-	float offsetX, offsetY;
+	S2_Vector2 vlb, vrb, vrt, vlt;
+	S2_Vector2 vo;
 	float originalWidth, originalHeight;
 	bool isRotated;
 };
@@ -57,5 +57,6 @@ public:
 };
 
 S2_SpriteSheet * S2_LoadSpriteSheetFromFile(char * fileName, S2_Texture * pTexture);
+void S2_DrawSprite(const S2_Sprite *pSprite, float x, float y);
 
 #endif

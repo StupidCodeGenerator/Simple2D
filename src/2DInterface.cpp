@@ -81,6 +81,7 @@ void S2_DrawLimitedTexture(const float x, const float y,
 	glBindTexture(GL_TEXTURE_2D, texture->textureName);
 	glBegin(GL_QUADS);
 
+	// ²ÄÖÊ·¶Î§£»»æÖÆ·¶Î§
 	glTexCoord2f(left, bottom); glVertex2f(vertexBLx, vertexBLy);
 	glTexCoord2f(right, bottom); glVertex2f(vertexBRx, vertexBRy);
 	glTexCoord2f(right, top); glVertex2f(vertexTRx, vertexTRy);
@@ -128,17 +129,23 @@ S2_SpriteSheet * S2_LoadSpriteSheetFromFile(char* fileName, S2_Texture * pTextur
 		//float lbx, lby, lbox, lboy;
 		//LeftTopToLeftBottomTranslation(&lbx, &lby, x, y, pTexture->height, h);
 		//LeftTopToLeftBottomTranslation(&lbox, &lboy, oX, oY, oH, h);
-		S2_Vector2 * pVlt = S2_CreateVector2(x, y);
-		S2_Vector2 * pVlb = S2_LeftTopToLeftBottomTransaction(pVlt, pTexture->height);
-		pVlb = S2_SubVector2(pVlb, S2_CreateVector2(0, h)); // move anchor point to the left bottom point
-		S2_Vector2 * volt = S2_CreateVector2(oX, oY);
-		S2_Vector2 * volb = S2_LeftTopToLeftBottomTransaction(volt, oH);
-		volb = S2_SubVector2(volb, S2_CreateVector2(0, h)); // move anchor point to the left bottom point
+		S2_Vector2 pVlt = S2_CreateVector2(x, y);
+		S2_Vector2 vlb = S2_LeftTopToLeftBottomTransaction(&pVlt, pTexture->height);
+		vlb = S2_SubVector2(&vlb, &S2_CreateVector2(0, h)); // move anchor point to the left bottom point
+		S2_Vector2 volt = S2_CreateVector2(oX, oY);
+		S2_Vector2 volb = S2_LeftTopToLeftBottomTransaction(&volt, oH);
+		volb = S2_SubVector2(&volb, &S2_CreateVector2(0, h)); // move anchor point to the left bottom point
 		// Calculate the vertices and write data to sprite
-		pSprite->pVlb = pVlb;
-		pSprite->pVrb = S2_AddVector2(pVlb, S2_CreateVector2(w, 0));
-		pSprite->pVrt = S2_AddVector2(pVlb, S2_CreateVector2(w, h));
-		pSprite->pVlt = S2_AddVector2(pVlb, S2_CreateVector2(0, h));
+		pSprite->vlb = S2_PixelVectorToTextureVector(&vlb, pTexture->width, pTexture->height);
+		pSprite->vrb = S2_PixelVectorToTextureVector(&S2_AddVector2(&vlb, &S2_CreateVector2(w, 0)),
+			pTexture->width, pTexture->height);
+		pSprite->vrt = S2_PixelVectorToTextureVector(&S2_AddVector2(&vlb, &S2_CreateVector2(w, h)),
+			pTexture->width, pTexture->height);
+		pSprite->vlt = S2_PixelVectorToTextureVector(&S2_AddVector2(&vlb, &S2_CreateVector2(0, h)),
+			pTexture->width, pTexture->height);
+		pSprite->vo = volb; // offset is about the painting position so don't need to translate.
+		pSprite->originalHeight = oH;
+		pSprite->originalWidth = oW;
 		// Then put the sprite into a sprite sheet
 		pResult->pSprites[spriteCount] = *pSprite;
 		spriteCount++;
@@ -146,4 +153,7 @@ S2_SpriteSheet * S2_LoadSpriteSheetFromFile(char* fileName, S2_Texture * pTextur
 	}
 	pResult->length = spriteCount;
 	return pResult;
+}
+
+void S2_DrawSprite(const S2_Sprite *pSprite, float x, float y) {
 }

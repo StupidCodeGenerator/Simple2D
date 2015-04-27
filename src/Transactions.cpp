@@ -32,9 +32,20 @@ S2_Vector2 S2_SubVector2(const S2_Vector2* vl, const S2_Vector2* vr) {
 	return result;
 }
 
+// Translate the left top coordiante into the left bottom coordinate.
+// The screen use left top as the (0,0), but opengl use the left bottom one.
 S2_Vector2 S2_LeftTopToLeftBottomTransaction(const S2_Vector2* vlt, const float worldHeight) {
 	S2_Vector2 result;
 	result.x = vlt->x;
 	result.y = worldHeight - vlt->y;
 	return result;
 }
+
+// Translate the pixel coordinate into the openGL texture coordinate[0,0]~[1,1]
+S2_Vector2 S2_PixelVectorToTextureVector(const S2_Vector2 *v, const float textureWidth, const float textureHeight) {
+	S2_Vector2 result;
+	result.x = v->x / textureWidth;
+	result.y = v->y / textureHeight;
+	return result;
+}
+
