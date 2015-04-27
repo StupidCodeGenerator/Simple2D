@@ -3,7 +3,7 @@
 #include <Windows.h>
 #include "2DInterface.h"
 
-GLuint tex_2d;
+S2_Texture * pTestTexture;
 
 void renderScene(void) {
 	glClear(GL_COLOR_BUFFER_BIT);    //清除上次显示的结果，每次绘制前都必须调用      
@@ -15,6 +15,8 @@ void renderScene(void) {
 	S2_DrawRect(100, 100, 300, 200);
 	S2_SetColor(0.0, 1.0, 1.0);
 	S2_DrawLine(100, 100, 200, 300);
+	S2_DrawTexture(300, 300, pTestTexture);
+	S2_DrawLimitedTexture(500, 500, 0.0f, 0.5f, 0.5f, 0.0f, pTestTexture);
 	glFlush();  //和单缓冲GLUT_SINGLE 配合使用
 	glutSwapBuffers(); //和双缓冲GLUT_DOUBLE配合使用
 }
@@ -40,6 +42,8 @@ void main(int argc, char **argv) {
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE);
 	glEnable(GL_BLEND);
 
+	pTestTexture = S2_LoadTextureFromFile("../res/fuck.png", 256, 256);
+	S2_SpriteSheet * pTestSprite = S2_LoadSpriteSheetFromFile("../res/textureTest.xml", pTestTexture);
 
 	glutMainLoop();
 

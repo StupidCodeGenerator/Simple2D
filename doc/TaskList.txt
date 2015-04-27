@@ -6,3 +6,11 @@
 
 2 Advanced
 	2.1 DialogMachine for my personal use. (Done)
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Current work :
+I need a sprite coordinate info file loader to read the sprite
+coordinates.
+I should use Texturepacker at first and I should finish the engine,
+then the editors. 

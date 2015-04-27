@@ -5,3 +5,6 @@ tags
 *~
 *.swp
 *.tar.bz2*
+*.sdf
+*.opensdf
+*.tlog

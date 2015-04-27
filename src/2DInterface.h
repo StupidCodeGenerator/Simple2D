@@ -7,6 +7,8 @@
 #include<GL/glut.h>
 #include<stdio.h>
 #include"SOIL.h"
+#include"tinyxml2.h"
+#include "Transactions.h"
 
 // The SetColor(float, float, float) function will change them
 // And the paint procedure will paint the shapes based on that
@@ -16,9 +18,6 @@
 extern float S2_Color_r;
 extern float S2_Color_g;
 extern float S2_Color_b;
-
-
-
 
 void S2_SetColor(const float r, const float g, const float b);
 
@@ -34,28 +33,29 @@ public:
 };
 
 // the width and height should be well known before load
-S2_Texture* LoadTextureFromFile(char * fileName, int texWidth, int texHeight);
+S2_Texture* S2_LoadTextureFromFile(char * fileName, int texWidth, int texHeight);
 
 void S2_DrawTexture(const float x, const float y, S2_Texture * texture);
 void S2_DrawLimitedTexture(const float x, const float y,
-	const float xLB, const float yLB,
-	const float xRB, const float yRB,
-	const float xRT, const float yRT,
-	const float xLT, const float yLT,
+	float left, float right, float top, float bottom,
 	S2_Texture * texture);
 
 class S2_Sprite {
 public:
-	S2_Texture* texture;
-	float xLB, yLB, xRB, yRB, xRT, yRT, xLT, yLT; // Texture range
+	const char *pSpriteName;
+	S2_Texture *pTexture;
+	S2_Vector2 *pVlb, *pVrb, *pVrt, *pVlt;
+	float offsetX, offsetY;
+	float originalWidth, originalHeight;
 	bool isRotated;
 };
 
 class S2_SpriteSheet {
 public:
-	S2_Sprite sprites[MAX_SPRITE_SHEET];
+	S2_Sprite * pSprites;
 	int length;
 };
 
+S2_SpriteSheet * S2_LoadSpriteSheetFromFile(char * fileName, S2_Texture * pTexture);
 
 #endif
