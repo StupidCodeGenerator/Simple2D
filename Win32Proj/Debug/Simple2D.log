@@ -1,25 +1,29 @@
-﻿Build started 2015/4/27 7:33:35.
-     1>Project "D:\GithubUpload\Simple2D\Win32Proj\Simple2D.vcxproj" on node 2 (Build target(s)).
+﻿生成启动时间为 2015/4/28 9:54:46。
+     1>项目“D:\github\Simple2D\Win32Proj\Simple2D.vcxproj”在节点 2 上(Build 个目标)。
      1>ClCompile:
-         C:\Program Files\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I..\libs\GL /I..\libs /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\src\2DInterface.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I..\libs\GL /I..\libs /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\src\2DInterface.cpp
          2DInterface.cpp
-     1>d:\githubupload\simple2d\src\2dinterface.cpp(110): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
-     1>d:\githubupload\simple2d\src\2dinterface.cpp(111): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
-     1>d:\githubupload\simple2d\src\2dinterface.cpp(112): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
-     1>d:\githubupload\simple2d\src\2dinterface.cpp(113): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
-     1>d:\githubupload\simple2d\src\2dinterface.cpp(116): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
-     1>d:\githubupload\simple2d\src\2dinterface.cpp(117): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
-     1>d:\githubupload\simple2d\src\2dinterface.cpp(118): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
-     1>d:\githubupload\simple2d\src\2dinterface.cpp(119): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
-     1>d:\githubupload\simple2d\src\2dinterface.cpp(132): warning C4244: 'argument' : conversion from 'int' to 'const float', possible loss of data
+     1>d:\github\simple2d\src\2dinterface.cpp(114): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+     1>d:\github\simple2d\src\2dinterface.cpp(115): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+     1>d:\github\simple2d\src\2dinterface.cpp(116): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+     1>d:\github\simple2d\src\2dinterface.cpp(117): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+     1>d:\github\simple2d\src\2dinterface.cpp(120): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+     1>d:\github\simple2d\src\2dinterface.cpp(121): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+     1>d:\github\simple2d\src\2dinterface.cpp(122): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+     1>d:\github\simple2d\src\2dinterface.cpp(123): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
        Link:
-         C:\Program Files\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\GithubUpload\Simple2D\Win32Proj\Debug\Simple2D.exe" /INCREMENTAL /NOLOGO /LIBPATH:..\libs SOIL.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\GithubUpload\Simple2D\Win32Proj\Debug\Simple2D.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\GithubUpload\Simple2D\Win32Proj\Debug\Simple2D.lib" /MACHINE:X86 Debug\tinyxml2.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\github\Simple2D\Win32Proj\Debug\Simple2D.exe" /INCREMENTAL /NOLOGO /LIBPATH:..\libs SOIL.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\github\Simple2D\Win32Proj\Debug\Simple2D.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\github\Simple2D\Win32Proj\Debug\Simple2D.lib" /MACHINE:X86 Debug\tinyxml2.obj
          Debug\2DInterface.obj
          Debug\Main.obj
          Debug\Transactions.obj
-         Simple2D.vcxproj -> D:\GithubUpload\Simple2D\Win32Proj\Debug\Simple2D.exe
-     1>Done Building Project "D:\GithubUpload\Simple2D\Win32Proj\Simple2D.vcxproj" (Build target(s)).
+         LINK : 没有找到 D:\github\Simple2D\Win32Proj\Debug\Simple2D.exe 或上一个增量链接没有生成它；正在执行完全链接
+     1>SOIL.lib(image_DXT.obj) : warning LNK4204: “D:\github\Simple2D\Win32Proj\Debug\vc120.pdb”缺少引用模块的调试信息；正在链接对象，如同没有调试信息一样
+     1>SOIL.lib(image_helper.obj) : warning LNK4204: “D:\github\Simple2D\Win32Proj\Debug\vc120.pdb”缺少引用模块的调试信息；正在链接对象，如同没有调试信息一样
+     1>SOIL.lib(SOIL.obj) : warning LNK4204: “D:\github\Simple2D\Win32Proj\Debug\vc120.pdb”缺少引用模块的调试信息；正在链接对象，如同没有调试信息一样
+     1>SOIL.lib(stb_image_aug.obj) : warning LNK4204: “D:\github\Simple2D\Win32Proj\Debug\vc120.pdb”缺少引用模块的调试信息；正在链接对象，如同没有调试信息一样
+         Simple2D.vcxproj -> D:\github\Simple2D\Win32Proj\Debug\Simple2D.exe
+     1>已完成生成项目“D:\github\Simple2D\Win32Proj\Simple2D.vcxproj”(Build 个目标)的操作。
 
-Build succeeded.
+生成成功。
 
-Time Elapsed 00:00:00.82
+已用时间 00:00:01.16
