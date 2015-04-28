@@ -25,7 +25,7 @@
       <Filter>src\Helpers</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Transactions.cpp">
-      <Filter>src\Helpers</Filter>
+      <Filter>src\Core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -36,7 +36,7 @@
       <Filter>src\Helpers</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Transactions.h">
-      <Filter>src\Helpers</Filter>
+      <Filter>src\Core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

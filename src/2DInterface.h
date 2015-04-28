@@ -36,15 +36,16 @@ public:
 S2_Texture* S2_LoadTextureFromFile(char * fileName, int texWidth, int texHeight);
 
 void S2_DrawTexture(const float x, const float y, S2_Texture * texture);
-void S2_DrawLimitedTexture(const float x, const float y,
-	S2_Vector2 *plb, S2_Vector2 *prb, S2_Vector2 *prt, S2_Vector2 *plt,
-	S2_Texture * texture);
+void S2_DrawLimitedTexture(const float x, const float y, S2_Bound bound, S2_Texture * texture);
 
 class S2_Sprite {
 public:
 	const char *pSpriteName;
 	S2_Texture *pTexture;
-	S2_Vector2 vlb, vrb, vrt, vlt;
+	// No matter left top or left bottom coordinate, 
+	// the left, right, top, bottom bound is always the same.
+	// So i use it to represent the sprite
+	S2_Bound bound; 
 	S2_Vector2 vo;
 	float originalWidth, originalHeight;
 	bool isRotated;

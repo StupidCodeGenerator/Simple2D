@@ -59,13 +59,15 @@ S2_Texture* S2_LoadTextureFromFile(char* fileName, int texWidth, int texHeight) 
 void S2_DrawTexture(const float x, const float y, S2_Texture* texture) {
 	S2_DrawLimitedTexture(
 		x, y,
-		0.0f, 1.0f, 1.0f, 0.0f,
+		S2_CreateBound(0.0f, 1.0f, 1.0f, 0.0f),
 		texture);
 }
 
-void S2_DrawLimitedTexture(const float x, const float y,
-	float left, float right, float top, float bottom,
-	S2_Texture * texture) {
+void S2_DrawLimitedTexture(const float x, const float y, S2_Bound bound, S2_Texture * texture) {
+	float left = bound.left;
+	float right = bound.right;
+	float top = bound.top;
+	float bottom = bound.bottom;
 	// Calculate vertexes
 	float width = (texture->width) * (right - left);
 	float height = (texture->height) * (top - bottom);
@@ -104,10 +106,11 @@ S2_SpriteSheet * S2_LoadSpriteSheetFromFile(char* fileName, S2_Texture * pTextur
 	int spriteCount = 0;
 	pResult->pSprites = new S2_Sprite[MAX_SPRITE_SHEET];
 	while (pChildEle != NULL) {
+		// Create the sprite
 		S2_Sprite * pSprite = new S2_Sprite();
-		// Read the original data
 		pSprite->pSpriteName = pChildEle->Attribute("n");
 		pSprite->pTexture = pTexture;
+		// Read the original data
 		float x = atof(pChildEle->Attribute("x"));
 		float y = atof(pChildEle->Attribute("y"));
 		float w = atof(pChildEle->Attribute("w"));
@@ -118,34 +121,22 @@ S2_SpriteSheet * S2_LoadSpriteSheetFromFile(char* fileName, S2_Texture * pTextur
 			oY = atof(pChildEle->Attribute("oY"));
 			oW = atof(pChildEle->Attribute("oW"));
 			oH = atof(pChildEle->Attribute("oH"));
-		} else {
+		}
+		else {
 			oX = x, oY = y, oW = w, oH = h;
 		}
 		pSprite->isRotated = FALSE;
 		if (pChildEle->Attribute("r") != NULL) {
 			pSprite->isRotated = (pChildEle->Attribute("r")[0] == 'y');
 		}
-		// Then translate them into left bottom coordination
-		//float lbx, lby, lbox, lboy;
-		//LeftTopToLeftBottomTranslation(&lbx, &lby, x, y, pTexture->height, h);
-		//LeftTopToLeftBottomTranslation(&lbox, &lboy, oX, oY, oH, h);
-		S2_Vector2 pVlt = S2_CreateVector2(x, y);
-		S2_Vector2 vlb = S2_LeftTopToLeftBottomTransaction(&pVlt, pTexture->height);
-		vlb = S2_SubVector2(&vlb, &S2_CreateVector2(0, h)); // move anchor point to the left bottom point
+		// Then calculate the bound and other datas
+		pSprite->bound.left = x;
+		pSprite->bound.right = pTexture->width - w - x;
+		pSprite->bound.top = y;
+		pSprite->bound.bottom = pTexture->height - h - y;
 		S2_Vector2 volt = S2_CreateVector2(oX, oY);
 		S2_Vector2 volb = S2_LeftTopToLeftBottomTransaction(&volt, oH);
-		volb = S2_SubVector2(&volb, &S2_CreateVector2(0, h)); // move anchor point to the left bottom point
-		// Calculate the vertices and write data to sprite
-		pSprite->vlb = S2_PixelVectorToTextureVector(&vlb, pTexture->width, pTexture->height);
-		pSprite->vrb = S2_PixelVectorToTextureVector(&S2_AddVector2(&vlb, &S2_CreateVector2(w, 0)),
-			pTexture->width, pTexture->height);
-		pSprite->vrt = S2_PixelVectorToTextureVector(&S2_AddVector2(&vlb, &S2_CreateVector2(w, h)),
-			pTexture->width, pTexture->height);
-		pSprite->vlt = S2_PixelVectorToTextureVector(&S2_AddVector2(&vlb, &S2_CreateVector2(0, h)),
-			pTexture->width, pTexture->height);
-		pSprite->vo = volb; // offset is about the painting position so don't need to translate.
-		pSprite->originalHeight = oH;
-		pSprite->originalWidth = oW;
+		pSprite->vo = S2_SubVector2(&volb, &S2_CreateVector2(0, h));
 		// Then put the sprite into a sprite sheet
 		pResult->pSprites[spriteCount] = *pSprite;
 		spriteCount++;
