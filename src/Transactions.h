@@ -23,7 +23,7 @@ typedef struct {
 
 S2_Bound S2_CreateEmptyBound();
 S2_Bound S2_CreateBound(const float left, const float right, const float top, const float bottom);
-
+S2_Bound S2_ScaleBoundByTextureSize(S2_Bound *pBound, const float textureWidth, const float textureHeight);
 
 // Translate the left top coordiante into the left bottom coordinate.
 // The screen use left top as the (0,0), but opengl use the left bottom one.

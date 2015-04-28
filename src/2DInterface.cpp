@@ -97,7 +97,7 @@ void S2_DrawLimitedTexture(const float x, const float y, S2_Bound bound, S2_Text
 	The Xml file uses the left top as the 0 spot. But the openGL uses
 	left bottom as the 0 spot.
 	*/
-S2_SpriteSheet * S2_LoadSpriteSheetFromFile(char* fileName, S2_Texture * pTexture) {
+S2_SpriteSheet * S2_LoadSpriteSheetFromFile(const char* fileName, S2_Texture * pTexture) {
 	tinyxml2::XMLDocument * xDoc = new tinyxml2::XMLDocument();
 	xDoc->LoadFile(fileName);
 	tinyxml2::XMLElement * pSpriteRoot = xDoc->LastChild()->ToElement();
@@ -121,8 +121,7 @@ S2_SpriteSheet * S2_LoadSpriteSheetFromFile(char* fileName, S2_Texture * pTextur
 			oY = atof(pChildEle->Attribute("oY"));
 			oW = atof(pChildEle->Attribute("oW"));
 			oH = atof(pChildEle->Attribute("oH"));
-		}
-		else {
+		} else {
 			oX = x, oY = y, oW = w, oH = h;
 		}
 		pSprite->isRotated = FALSE;
@@ -130,10 +129,12 @@ S2_SpriteSheet * S2_LoadSpriteSheetFromFile(char* fileName, S2_Texture * pTextur
 			pSprite->isRotated = (pChildEle->Attribute("r")[0] == 'y');
 		}
 		// Then calculate the bound and other datas
-		pSprite->bound.left = x;
-		pSprite->bound.right = pTexture->width - w - x;
-		pSprite->bound.top = y;
-		pSprite->bound.bottom = pTexture->height - h - y;
+		S2_Bound unScaledBound;
+		unScaledBound.left = x;
+		unScaledBound.right = pTexture->width - w - x;
+		unScaledBound.top = y;
+		unScaledBound.bottom = pTexture->height - h - y;
+		pSprite->bound = S2_ScaleBoundByTextureSize(&unScaledBound, pTexture->width, pTexture->height);
 		S2_Vector2 volt = S2_CreateVector2(oX, oY);
 		S2_Vector2 volb = S2_LeftTopToLeftBottomTransaction(&volt, oH);
 		pSprite->vo = S2_SubVector2(&volb, &S2_CreateVector2(0, h));
@@ -146,5 +147,6 @@ S2_SpriteSheet * S2_LoadSpriteSheetFromFile(char* fileName, S2_Texture * pTextur
 	return pResult;
 }
 
-void S2_DrawSprite(const S2_Sprite *pSprite, float x, float y) {
+void S2_DrawSprite(S2_Sprite *pSprite, const float x, const float y) {
+	S2_DrawLimitedTexture(x + pSprite->vo.x, y + pSprite->vo.y, pSprite->bound, pSprite->pTexture);
 }

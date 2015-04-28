@@ -57,7 +57,10 @@ public:
 	int length;
 };
 
-S2_SpriteSheet * S2_LoadSpriteSheetFromFile(char * fileName, S2_Texture * pTexture);
-void S2_DrawSprite(const S2_Sprite *pSprite, float x, float y);
+S2_SpriteSheet * S2_LoadSpriteSheetFromFile(const char * fileName, S2_Texture * pTexture);
+// Despide of using index to get the sprite in array, I define a function that load a sprite by name.
+// But it was slow so use that carefully.
+S2_Sprite * S2_FindSpriteInSheet(const S2_SpriteSheet * sheet, const char *pName);
+void S2_DrawSprite(S2_Sprite *pSprite, const float x, const float y);
 
 #endif

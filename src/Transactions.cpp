@@ -51,6 +51,15 @@ S2_Bound S2_CreateBound(const float left, const float right, const float top, co
 	return result;
 }
 
+S2_Bound S2_ScaleBoundByTextureSize(S2_Bound *pBound, const float textureWidth, const float textureHeight) {
+	S2_Bound result;
+	result.top = pBound->top / textureHeight;
+	result.bottom = pBound->bottom / textureHeight;
+	result.left = pBound->left / textureWidth;
+	result.right = pBound->right / textureHeight;
+	return result;
+}
+
 // Translate the left top coordiante into the left bottom coordinate.
 // The screen use left top as the (0,0), but opengl use the left bottom one.
 S2_Vector2 S2_LeftTopToLeftBottomTransaction(const S2_Vector2* vlt, const float worldHeight) {
