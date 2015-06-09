@@ -137,7 +137,9 @@ S2_SpriteSheet * S2_LoadSpriteSheetFromFile(const char* fileName, S2_Texture * p
 		pSprite->bound = S2_ScaleBoundByTextureSize(&unScaledBound, pTexture->width, pTexture->height);
 		S2_Vector2 volt = S2_CreateVector2(oX, oY);
 		S2_Vector2 volb = S2_LeftTopToLeftBottomTransaction(&volt, oH);
-		pSprite->vo = S2_SubVector2(&volb, &S2_CreateVector2(0, h));
+        // FIXME
+        S2_Vector2 tmp = S2_CreateVector2(0, h);
+		pSprite->vo = S2_SubVector2(&volb, &tmp);
 		// Then put the sprite into a sprite sheet
 		pResult->pSprites[spriteCount] = *pSprite;
 		spriteCount++;

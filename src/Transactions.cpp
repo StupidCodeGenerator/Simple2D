@@ -7,7 +7,7 @@ S2_Vector2 S2_CreateEmptyVector2() {
 	return result;
 }
 
-S2_Vector2 S2_CreateVector2(const float x, const float y) {
+S2_Vector2 S2_CreateVector2(float x, float y) {
 	S2_Vector2 result;
 	result.x = x;
 	result.y = y;
