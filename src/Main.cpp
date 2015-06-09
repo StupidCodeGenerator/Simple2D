@@ -1,6 +1,6 @@
 #include <GL/glut.h>
 #include <stdio.h>
-#include <Windows.h>
+//#include <Windows.h>
 #include "2DInterface.h"
 
 S2_Texture * pTestTexture;
@@ -23,7 +23,7 @@ void renderScene(void) {
 	glFlush();  //和单缓冲GLUT_SINGLE 配合使用
 	glutSwapBuffers(); //和双缓冲GLUT_DOUBLE配合使用
 }
-void main(int argc, char **argv) {
+int main(int argc, char **argv) {
 	const float texcolor[] = { 1.0, 1.0, 1.0, 1.0 };
 
 	glutInit(&argc, argv);
@@ -50,5 +50,5 @@ void main(int argc, char **argv) {
 	pTestSpriteSheet = S2_LoadSpriteSheetFromFile("../res/textureTest.xml", pSpriteTexture);
 
 	glutMainLoop();
-
+    return 0;
 }

@@ -4,10 +4,11 @@
 
 #define MAX_SPRITE_SHEET 0xff
 
-#include<GL/glut.h>
-#include<stdio.h>
-#include"SOIL.h"
-#include"tinyxml2.h"
+#include <GL/glut.h>
+#include <stdio.h>
+#include "Common.h"
+#include "SOIL.h"
+#include "tinyxml2.h"
 #include "Transactions.h"
 
 // The SetColor(float, float, float) function will change them
