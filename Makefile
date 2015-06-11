@@ -1,5 +1,8 @@
 UANME = $(shell uname)
 ROOT = $(shell pwd)
+TARGET =
+CLEAN_TARGETS =
+ALL_TARGET =
 
 ## TODO move to config.mk
 #include $(PROJROOT)/config.mk
@@ -11,48 +14,39 @@ else
 QUIET=
 endif
 #
-CC = $(QUIET)g++
+CXX = $(QUIET)g++
 #CFLAGS :=  -pipe -c -Wall -g -O0 -std=c99
 #CPPFLAG = -DDEBUG
 #######################3
-
-
-TARGET =
-CLEAN_TARGETS =
-
-
+LDFLAGS =  -lGL  -lGLU -lglut ./libs/libSimple2D.a
 INCDIRS ?= -I src
 ## FIXME
 INCDIRS += -I libs/tinyxml2
-INCDIRS += -I libs/SOIL/src
-INCDIRS += -I libs
+INCDIRS += -I libs/SOIL
 INCDIRS += -I .
 CFLAGS := $(INCDIRS) -g -Wall -pipe -O2
-LDFLAGS =  -lGL  -lGLU -lglut ./libs/SOIL/lib/libSOIL.a
-TARGET := Simple2D
 
-
+FINAL_TARGET := Simple2D
 SOURCEDIR ?= ./src
 
 TARGETS = 2DInterface.cpp \
 		  Main.cpp \
 		  Transactions.cpp \
-		  tinyxml2.cpp \
-
-
 
 OBJECTS := $(TARGETS:.cpp=.o)
 
-all: $(TARGET)
+ALL_TARGET += $(FINAL_TARGET)
 
-$(TARGET) : $(OBJECTS)
-	$(CC) -o $@ $^ $(LDFLAGS)
+
+all: $(ALL_TARGET)
+
+$(FINAL_TARGET) : $(OBJECTS)
+	$(CXX) -o $@ $^ $(LDFLAGS)
 
 
 $(OBJECTS): %.o : $(SOURCEDIR)/%.cpp
 	@echo [CC] $<
-	$(CC) -c $(TEST_CFLAG) $(CFLAGS) $(CPPFLAG)  $< -o $@
-
+	$(CXX) -c $(TEST_CFLAG) $(CFLAGS) $(CPPFLAG)  $< -o $@
 
 
 # TODO

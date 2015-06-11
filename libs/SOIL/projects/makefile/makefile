@@ -12,7 +12,7 @@ LIBDIR = ../../lib
 INCDIR = ../../src
 OBJDIR = obj
 
-CXX = gcc
+CXX = g++
 CXXFLAGS = -O2 -s -Wall
 DELETER = rm -f
 COPIER = cp
