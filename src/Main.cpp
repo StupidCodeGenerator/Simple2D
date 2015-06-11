@@ -45,9 +45,9 @@ int main(int argc, char **argv) {
     glBlendFunc(GL_SRC_ALPHA, GL_ONE);
     glEnable(GL_BLEND);
 
-    pTestTexture = S2_LoadTextureFromFile("../res/fuck.png", 256, 256);
-    pSpriteTexture = S2_LoadTextureFromFile("../res/textureTest.png", 1024, 1024);
-    pTestSpriteSheet = S2_LoadSpriteSheetFromFile("../res/textureTest.xml", pSpriteTexture);
+    pTestTexture = S2_LoadTextureFromFile("./res/fuck.png", 256, 256);
+    pSpriteTexture = S2_LoadTextureFromFile("./res/textureTest.png", 1024, 1024);
+    pTestSpriteSheet = S2_LoadSpriteSheetFromFile("./res/textureTest.xml", pSpriteTexture);
 
     glutMainLoop();
     return 0;
